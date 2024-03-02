@@ -1,31 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  Pressable,
   View,
   Text,
-  ScrollView,
-  TextInput,
-  Button
 } from 'react-native';
 
 import ToDoList from './ToDoList.jsx';
 import ToDoForm from './ToDoForm.jsx';
 
 function App() {
+  const [tasks, setTasks] = useState([
+    'Do laundry',
+    'Go to gym',
+    'Walk dog'
+  ]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>To Do List</Text>
       <View style={styles.listContainer}>
-        <ToDoList/>
+        <ToDoList tasks={tasks} />
       </View>
       <View style={styles.formContainer}>
         <ToDoForm/>
