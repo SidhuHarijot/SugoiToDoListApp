@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -14,14 +14,25 @@ import {
 } from 'react-native';
 
 
-function ToDoForm() {
+function ToDoForm({addTask}) {
+  const [taskText, setTaskText] = useState(() => "")
+
+  function updateTaskList(task) {
+    console.log(task)
+    if (task === "") return
+    addTask(task)
+    setTaskText("")
+  }
+
   return (
     <View style={styles.form}>
         <TextInput
             style={styles.input}
             placeholder="Create a new task..."
+            onChangeText={(text) => setTaskText(text)}
+            value={taskText}
         />
-        <Button title="Add" color='#3b8941'/>
+        <Button title="Add" color='#3b8941' onPress={() => updateTaskList(taskText)}/>
     </View>
   );
 }

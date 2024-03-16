@@ -10,11 +10,17 @@ import ToDoList from './ToDoList.jsx';
 import ToDoForm from './ToDoForm.jsx';
 
 function App() {
-  const [tasks, setTasks] = useState([
-    'Do laundry',
-    'Go to gym',
-    'Walk dog'
-  ]);
+  type Task = {
+    name: string,
+    completed: boolean,
+  }
+
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  function addTask(taskName: string) {
+    const newTask = {name: taskName, completed: false};
+    setTasks([...tasks, newTask]);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -23,7 +29,7 @@ function App() {
         <ToDoList tasks={tasks} />
       </View>
       <View style={styles.formContainer}>
-        <ToDoForm/>
+        <ToDoForm addTask={addTask}/>
       </View>
     </SafeAreaView>
   );

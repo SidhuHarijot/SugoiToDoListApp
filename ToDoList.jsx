@@ -14,7 +14,7 @@ function ToDoList({ tasks }) {
       {tasks.map((task, index) => (
         <Pressable key={index}>
           <View style={[styles.task]}>
-            <Text style={styles.taskText}>{task}</Text>
+            <Text style={styles.taskText}>{task.name}</Text>
           </View>
         </Pressable>
       ))}
